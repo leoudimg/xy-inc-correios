@@ -1,49 +1,47 @@
-html, body {
-    height: 100%;
+table.tmptabela {
+	width: 100%;
+	margin-bottom: 9px;
 }
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background-color: moccasin;  
+
+table.tmptabela tr td {
+	height: 20px;
+	border: 1px solid #CFCFCF;
+	color: black;
+	padding: 3px;
+	font-size: 1.1em;
 }
-.wrapper {
-    position:absolute;
-    top: 21px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: fuchsia;
+
+table.tmptabela tr th {
+	padding: 4px;
 }
-.inner-wrapper,
-.center.pane .inner {
-    display: table;
-    width: 100%;
-    height: 100%;
+
+.thleft tr th {
+	text-align: left;
+	padding-left: 4px;
 }
-.pane {
-    display: table-cell;
+
+.thright tr th {
+	text-align: right;
+	padding-right: 4px;
 }
-.left.pane {
-   background-color: olivedrab; 
+
+table tr td.label-tabela {
+	background-color: #E0EEEE;
 }
-.center.pane {
-    background-color: lightblue;
+
+table.tmptabela tr th {
+	font-size: 1.2em;
+	font-family: arial;
+	height: 20px;
+	background-color: #6699CC;
+	border: none;
+	color: #fff;
 }
-.center.pane .inner .top,
-.center.pane .inner .bottom{
-    display: table-row;  
-}
-.center.pane .inner .top {
-    background-color: lightcoral;   
-}
-.center.pane .inner .bottom {   
-    background-color: orange;
-    height: 100%;
-    width: 100%;
-}
-.right.pane {
-    background-color: #999;
+table.tmptabela tr td.sub-th{
+	background-color: #e0eeee;
+	border: none;
+	font-weight: bold;
+	color: #888;
+	font-size: 1.4em;
+	vertical-align: middle;
 }

@@ -13,7 +13,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -86,16 +85,24 @@ public class EnderecoService {
   @GET
   @Path("buscarCEPLogradouro/{logradouro}")
   @Produces(MediaType.APPLICATION_JSON)
-  public String buscarEnderecoLogradouro(@PathParam("logradouro") String logradouro) {
+  public List<String> buscarEnderecoLogradouro(@PathParam("logradouro") String logradouro) {
 
     controller = new EnderecoController();
 
-    String retorno = controller.buscarEnderecoLogradouro(logradouro);
+    List<String> retorno = controller.buscarEnderecoLogradouro(logradouro);
 
     if (retorno == null) {
+
+      logger.error(ERROR_REQUEST);
+
       throw new WebApplicationException(ERROR_REQUEST, CODE_ERROR_BAD_REQUEST);
-    } else if (StringUtils.isBlank(retorno)) {
+
+    } else if (CollectionUtils.isEmpty(retorno)) {
+
+      logger.error(ERROR_NOT_FOUND);
+
       throw new WebApplicationException(ERROR_NOT_FOUND, CODE_ERROR_NOT_FOUND);
+
     } else {
       return retorno;
     }

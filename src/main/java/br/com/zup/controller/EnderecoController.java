@@ -160,9 +160,9 @@ public class EnderecoController {
    * 
    * @param logradouro
    *          - Logradouro informado pelo sistema de origem
-   * @return - Lista de enderecos referente ao CEP.
+   * @return - Lista de ceps referente ao logradouro.
    */
-  public String buscarEnderecoLogradouro(String logradouro) {
+  public List<String> buscarEnderecoLogradouro(String logradouro) {
 
     if (StringUtils.isNotBlank(logradouro)) {
 
@@ -222,8 +222,14 @@ public class EnderecoController {
 
               List<Endereco> enderecos = parsearHtml(doc);
 
+              List<String> ceps = new ArrayList<String>();
+
               if (CollectionUtils.isNotEmpty(enderecos)) {
-                return enderecos.get(0).getCep();
+
+                for (Endereco endereco : enderecos) {
+                  ceps.add(endereco.getCep());
+                }
+                return ceps;
               }
 
             }
